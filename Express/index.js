@@ -10,7 +10,18 @@ app.get("/test", function (req, res) {
     res.send("Test.");
 })
 
-//Iniciando o servidor na porta 8181. 
+//Rota com parâmetro opcional "?". 
+app.get("/about/:parameter?", function (req, res) {
+    var parameter = req.params.parameter;
+
+    if (parameter) {
+        res.send(parameter);
+    } else {
+        res.send("About.");
+    }
+})
+
+//Iniciando o servidor localhost na porta 8181. 
 app.listen(8181, function (erro) {
     if (erro) {
         console.log("Error.");
