@@ -14,6 +14,10 @@ app.get("/perguntar", (req, res) => {
     res.render("perguntar");
 });
 
+app.post("/perguntafeita", (req, res) => {
+    res.send("Formulario Enviado.");
+});
+
 app.listen(8181, () => {
     console.log("Success.");
 });
