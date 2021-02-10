@@ -1,6 +1,15 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const conexao = require("./database/database");
+const Pergunta = require("./database/Pergunta");
+
+//Database
+conexao.authenticate().then(() => {
+    console.log("Conexao feita com o DB.")
+}).catch((msgErro) => {
+    console.log(msgErro);
+});
 
 //Usando EJS como view engine. 
 app.set("view engine", "ejs");
@@ -21,7 +30,13 @@ app.get("/perguntar", (req, res) => {
 app.post("/perguntafeita", (req, res) => {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
-    res.send("Formulario Enviado.");
+
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(() => {
+        res.redirect("/");
+    });
 });
 
 app.listen(8181, () => {
