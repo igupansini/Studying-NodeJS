@@ -1,6 +1,30 @@
 <%- include ('partials/header.ejs') %>
+    <%- include ('partials/homenavbar.ejs') %>
 
-    <body>
-        <h1>Welcome.</h1>
-    </body>
-    <%- include ('partials/footer.ejs') %>
+        <body>
+            <div class="container">
+                <br>
+                <div class="jumbotron">
+                    <h1 class="display-4">Olá,</h1>
+                    <p class="lead">Este é um simples projeto para estudar o NodeJS.</p>
+                    <hr class="my-4">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt augue ac diam
+                        auctor sollicitudin. Proin dui odio, imperdiet in libero eget, malesuada suscipit ex. Vivamus
+                        vulputate ornare magna, non.</p>
+                </div>
+                <% articles.forEach(article=> { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>
+                                <%= article.title %>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <a href="/" class="btn btn-success">Visualizar artigo</a>
+                        </div>
+                    </div>
+                    <br>
+                    <% }) %>
+            </div>
+        </body>
+        <%- include ('partials/footer.ejs') %>
